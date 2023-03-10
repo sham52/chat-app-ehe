@@ -91,7 +91,7 @@ const Register = () => {
       createdAt: serverTimestamp(),
     });
   };
-  const handleStorage = async (user, file) => {
+  const handleDatabase = async (user, file) => {
     const date = new Date().getTime();
     const storageRef = ref(storage, `${input.username + date}`);
 
@@ -107,6 +107,16 @@ const Register = () => {
           });
         } catch (err) {
           console.log("Database'e basarken bişi oldu kanka");
+          toast.error(err.code);
+        }
+        try {
+          await updateProfile(user, {
+            displayName: input.username,
+            photoURL: downloadURL,
+          });
+        } catch (err) {
+          console.log("Profile updatelerken sıçtı galiba");
+          toast.error(err.code);
         }
       });
     });
@@ -119,7 +129,10 @@ const Register = () => {
     createUserWithEmailAndPassword(auth, input.email, input.password)
       .then((userCredentials) => {
         const user = userCredentials.user;
-        handleStorage(user, input.file);
+
+        handleDatabase(user, input.file);
+        //Update Profile
+
         user &&
           setError({
             email: "",

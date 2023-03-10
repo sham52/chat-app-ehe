@@ -29,7 +29,7 @@ const ChatBox = () => {
   }, []);
 
   const style = {
-    main: `flex flex-col bg-base-100 overflow-scroll  h-[195%]   `,
+    main: `flex flex-col bg-base-100 overflow-scroll h-[195%]   `,
   };
 
   return (

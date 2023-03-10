@@ -49,8 +49,6 @@ const SendMessage = ({ scroll }) => {
     scroll.current.scrollIntoView({ behavior: "smooth" });
   };
 
- 
-
   return (
     <form
       className="max-w-[728px] w-full flex text-xl fixed  bottom-0 "
@@ -62,25 +60,25 @@ const SendMessage = ({ scroll }) => {
         Enter Message
       </label>
 
-        <input
-          type="text"
-          id="messageInput"
-          className="input bg-slate-700 w-full text-white focus:outline-none border-none text-xl rounded-tr-none rounded-br-none rounded-bl-none"
-          name="messageInput"
-          value={message}
-          onChange={(e) => setMessage(e.target.value)}
-          placeholder="type message..."
-        />
-        <button
-          onClick={playSound}
-          type="submit"
-          className="btn outline-none bg-slate-600 gap-2 w-[25%] h-full rounded-tl-none rounded-bl-none rounded-br-none hover:scale-105"
-        >
-          <span className="flex text-md justify-between items-center gap-3 ">
-            Send
-            <AiOutlineSend size={20} />
-          </span>
-        </button>
+      <input
+        type="text"
+        id="messageInput"
+        className="input bg-slate-700 w-full text-white focus:outline-none border-none text-xl rounded-none "
+        name="messageInput"
+        value={message}
+        onChange={(e) => setMessage(e.target.value)}
+        placeholder="type message..."
+      />
+      <button
+        onClick={playSound}
+        type="submit"
+        className="btn outline-none bg-slate-600 gap-2 w-[25%] h-full rounded-none hover:scale-105"
+      >
+        <span className="flex text-md justify-between items-center gap-3 ">
+          Send
+          <AiOutlineSend size={20} />
+        </span>
+      </button>
     </form>
   );
 };

@@ -12,8 +12,9 @@ const Message = ({ message, time, username }) => {
 
   const showName =
     message.uid === auth.currentUser.uid ? "hidden" : `chat-header`;
+
   return (
-    <div className={`${justifyMessages} p-2`}>
+    <div className={`${justifyMessages} p-2 `}>
       <div className={showImage}>
         <div className="w-10 rounded-full">
           <img

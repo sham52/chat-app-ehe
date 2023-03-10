@@ -19,6 +19,7 @@ const NavBar = ({ handleTheme, setIsDark, isDark }) => {
     auth.signOut();
     navigate("/");
   };
+  console.log(user)
 
   return (
     <div className="navbar bg-base-100">
