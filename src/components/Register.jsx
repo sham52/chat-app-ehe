@@ -11,7 +11,6 @@ import { useNavigate } from "react-router-dom";
 import { toast } from "react-hot-toast";
 import { ref, uploadBytesResumable, getDownloadURL } from "firebase/storage";
 import { Link } from "react-router-dom";
-import { useAuthState } from "react-firebase-hooks/auth";
 const Register = () => {
   const [input, setInput] = useState({
     username: "",
@@ -83,14 +82,6 @@ const Register = () => {
     });
   };
 
-  const handleDocument = async (user) => {
-    await setDoc(doc(db, "users", user.uid), {
-      uid: user.uid,
-      displayName: input.username,
-      email: user.email,
-      createdAt: serverTimestamp(),
-    });
-  };
   const handleDatabase = async (user, file) => {
     const date = new Date().getTime();
     const storageRef = ref(storage, `${input.username + date}`);
@@ -98,7 +89,7 @@ const Register = () => {
     await uploadBytesResumable(storageRef, file).then(() => {
       getDownloadURL(storageRef).then(async (downloadURL) => {
         try {
-          await setDoc(doc(db, "users", user.uid), {
+          await setDoc(doc(db, "users", input.username), {
             uid: user.uid,
             displayName: input.username,
             email: user.email,
@@ -124,15 +115,11 @@ const Register = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-
-    //CreteUser
     createUserWithEmailAndPassword(auth, input.email, input.password)
       .then((userCredentials) => {
         const user = userCredentials.user;
 
         handleDatabase(user, input.file);
-        //Update Profile
-
         user &&
           setError({
             email: "",
@@ -142,21 +129,21 @@ const Register = () => {
             username: "",
             file: "",
           });
+        setInput({
+          email: "",
+          password: "",
+          confirmPassword: "",
+          username: "",
+          file: null,
+        });
         user && navigate("/chatbox");
         user && toast.success("Account created successfully!");
       })
       .catch((err) => {
-        console.log(err.code);
         setError({ ...error, signInError: err.code });
+        toast.error(err.code);
       });
     //
-    // setInput({
-    //   email: "",
-    //   password: "",
-    //   confirmPassword: "",
-    //   username: "",
-    //   file: null,
-    // });
   };
 
   return (

@@ -10,7 +10,6 @@ import { GrMail } from "react-icons/gr";
 import { AiFillFacebook } from "react-icons/ai";
 import { Link, useNavigate } from "react-router-dom";
 import { toast } from "react-hot-toast";
-import { useAuthState } from "react-firebase-hooks/auth";
 
 const MainScreen = () => {
   const navigate = useNavigate();
@@ -58,7 +57,7 @@ const MainScreen = () => {
             Welcome to Sham's Chat App
           </h1>
           <p className="mb-5">
-            To continue please sign up or choose a sign in method
+            Please sign up or choose a sign in method to continue
           </p>
 
           <div className="flex flex-col items-center justify-center  gap-3 mt-3">
@@ -99,7 +98,7 @@ const MainScreen = () => {
               <Link
                 to="/login"
                 href="#"
-                className="label-text-alt link link-hover"
+                className="label-text-alt text-sm link link-hover"
               >
                 You already have an account?
               </Link>

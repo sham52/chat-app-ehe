@@ -19,7 +19,7 @@ const NavBar = ({ handleTheme, setIsDark, isDark }) => {
     auth.signOut();
     navigate("/");
   };
-  console.log(user)
+  console.log(user);
 
   return (
     <div className="navbar bg-base-100">
@@ -64,9 +64,6 @@ const NavBar = ({ handleTheme, setIsDark, isDark }) => {
               <li>
                 <a>Portfolio</a>
               </li>
-              <li>
-                <a>About</a>
-              </li>
             </ul>
           </div>
         )}
@@ -110,29 +107,40 @@ const NavBar = ({ handleTheme, setIsDark, isDark }) => {
 
         {/* User Profile Dropdown */}
         {user ? (
-          <div className="dropdown dropdown-end">
-            <label tabIndex={0} className="btn btn-ghost btn-circle avatar">
-              <div className="w-10 rounded-full">
-                <img src={auth.currentUser.photoURL} />
-              </div>
-            </label>
-            <ul
-              tabIndex={0}
-              className="mt-3 p-2 shadow menu menu-compact dropdown-content bg-base-100 rounded-box w-52"
-            >
-              <li>
-                <a className="justify-between">
-                  Profile
-                  <span className="badge">New</span>
-                </a>
-              </li>
-              <li>
-                <a>Settings</a>
-              </li>
-              <li onClick={signOut}>
-                <a>Logout</a>
-              </li>
-            </ul>
+          <div className="flex gap-2">
+            {/* Message Searcher */}
+            <div className="form-control">
+              <input
+                type="text"
+                placeholder="Search Message..."
+                className="input input-bordered"
+              />
+            </div>
+            <div className="dropdown dropdown-end">
+              <label tabIndex={0} className="btn btn-ghost btn-circle avatar">
+                <div className="w-10 rounded-full">
+                  <img src={auth.currentUser.photoURL} />
+                </div>
+              </label>
+
+              <ul
+                tabIndex={0}
+                className="mt-3 p-2 shadow menu menu-compact dropdown-content bg-base-100 rounded-box w-52"
+              >
+                <li>
+                  <a className="justify-between">
+                    Profile
+                    <span className="badge">New</span>
+                  </a>
+                </li>
+                <li>
+                  <a>Settings</a>
+                </li>
+                <li onClick={signOut}>
+                  <a>Logout</a>
+                </li>
+              </ul>
+            </div>
           </div>
         ) : (
           ""

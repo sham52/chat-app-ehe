@@ -11,8 +11,8 @@ import Login from "./components/Login";
 import { Toaster } from "react-hot-toast";
 
 const style = {
-  appContainer: `max-w-[728px] max-h-screen mx-auto text-center `,
-  sectionContainer: `flex flex-col h-[100vh] bg-gray-100 shadow-xl relative `,
+  appContainer: `max-w-[728px] max-h-screen mx-auto text-center`,
+  sectionContainer: `flex flex-col h-[100vh] shadow-xl relative `,
 };
 
 function App() {

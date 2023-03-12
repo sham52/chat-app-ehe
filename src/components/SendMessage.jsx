@@ -3,6 +3,8 @@ import { auth, db } from "../firebase";
 import { addDoc, collection, serverTimestamp } from "firebase/firestore";
 import { toast } from "react-hot-toast";
 import { AiOutlineSend } from "react-icons/ai";
+import { MdAddPhotoAlternate } from "react-icons/md";
+
 import send from "../assets/send.mp3";
 import alert from "../assets/alert.mp3";
 
@@ -44,14 +46,13 @@ const SendMessage = ({ scroll }) => {
       createdAt: serverTimestamp(),
       uid,
     });
-    // {console.log("Photo: ", photoURL)}
     setMessage("");
     scroll.current.scrollIntoView({ behavior: "smooth" });
   };
 
   return (
     <form
-      className="max-w-[728px] w-full flex text-xl fixed  bottom-0 "
+      className="max-w-[728px] w-full flex text-xl fixed bottom-0 "
       onSubmit={(e) => {
         sendMessage(e);
       }}
@@ -60,6 +61,7 @@ const SendMessage = ({ scroll }) => {
         Enter Message
       </label>
 
+      {/* Text Input */}
       <input
         type="text"
         id="messageInput"
@@ -69,10 +71,21 @@ const SendMessage = ({ scroll }) => {
         onChange={(e) => setMessage(e.target.value)}
         placeholder="type message..."
       />
+      {/* Upload Image Button */}
+
+      <label className="label w-[10%] flex justify-center bg-slate-600 ">
+        <MdAddPhotoAlternate
+          className=" hover:scale-[130%]  transition-transform ease-out"
+          size={25}
+        />
+        <input type="file" className="hidden p-0 m-0" />
+      </label>
+
+      {/* Send Button */}
       <button
         onClick={playSound}
         type="submit"
-        className="btn outline-none bg-slate-600 gap-2 w-[25%] h-full rounded-none hover:scale-105"
+        className="btn border-none bg-slate-600 gap-2 w-[25%] h-full rounded-none hover:scale-105"
       >
         <span className="flex text-md justify-between items-center gap-3 ">
           Send
