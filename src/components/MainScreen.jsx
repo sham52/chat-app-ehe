@@ -40,6 +40,8 @@ const MainScreen = () => {
         const errorCode = err.code;
         const errorMessage = err.message;
         const credential = FacebookAuthProvider.credentialFromError(err);
+        console.log(errorCode);
+        toast.error(errorCode.split("/")[1]);
       });
   };
 
