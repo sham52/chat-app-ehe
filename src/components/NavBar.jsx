@@ -109,7 +109,7 @@ const NavBar = ({ handleTheme, setIsDark, isDark }) => {
         {user ? (
           <div className="flex gap-2">
             {/* Message Searcher */}
-            <div className="form-control">
+            <div className="form-control hidden lg:block">
               <input
                 type="text"
                 placeholder="Search Message..."

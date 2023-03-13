@@ -36,6 +36,7 @@ const Message = ({ message, time, username }) => {
       </div>
       <div className="chat-bubble">{message.text}</div>
       <div className="chat-footer opacity-50">Delivered</div>
+
     </div>
   );
 };
