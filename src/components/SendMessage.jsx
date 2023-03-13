@@ -3,10 +3,10 @@ import { auth, db } from "../firebase";
 import { addDoc, collection, serverTimestamp } from "firebase/firestore";
 import { toast } from "react-hot-toast";
 import { AiOutlineSend } from "react-icons/ai";
-import { MdAddPhotoAlternate } from "react-icons/md";
 
 import send from "../assets/send.mp3";
 import alert from "../assets/alert.mp3";
+import SendImage from "./SendImage";
 
 const SendMessage = ({ scroll }) => {
   const [message, setMessage] = useState("");
@@ -73,13 +73,8 @@ const SendMessage = ({ scroll }) => {
       />
       {/* Upload Image Button */}
 
-      <label className="label w-[10%] flex justify-center bg-slate-600 ">
-        <MdAddPhotoAlternate
-          className=" hover:scale-[130%]  transition-transform ease-out"
-          size={25}
-        />
-        <input type="file" className="hidden p-0 m-0" />
-      </label>
+      <SendImage/>
+      
 
       {/* Send Button */}
       <button

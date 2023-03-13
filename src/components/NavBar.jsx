@@ -119,7 +119,13 @@ const NavBar = ({ handleTheme, setIsDark, isDark }) => {
             <div className="dropdown dropdown-end">
               <label tabIndex={0} className="btn btn-ghost btn-circle avatar">
                 <div className="w-10 rounded-full">
-                  <img src={auth.currentUser.photoURL} />
+                  <img
+                    src={`${
+                      auth.currentUser.photoURL
+                        ? auth.currentUser.photoURL
+                        : "https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460__340.png"
+                    }`}
+                  />
                 </div>
               </label>
 
